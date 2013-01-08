@@ -29,10 +29,10 @@ sunxi_env_dev()
 sunxi_board_detect() {
     local board
     local model
-    sunx_env_dev
+    sunxi_env_dev
     [ -e "/tmp/sysinfo/" ] || mkdir -p "/tmp/sysinfo/"
-    board = "`uboot_getenv wrt_board`"
-    model = "`uboot_getenv wrt_model`"
+    board="`uboot_getenv wrt_board`"
+    model="`uboot_getenv wrt_model`"
     if [ "$board" != "" ]; then
 	SUNXI_BOARD_NAME="$board"
     fi
