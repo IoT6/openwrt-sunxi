@@ -827,6 +827,19 @@ endef
 
 $(eval $(call KernelPackage,usb-net-qmi-wwan))
 
+define KernelPackage/usb-net-cdc-ncm
+  TITLE:=Support for cdc ncm connections
+  KCONFIG:=CONFIG_USB_NET_CDC_NCM
+  FILES:=$(LINUX_DIR)/drivers/$(USBNET_DIR)/cdc_ncm.ko
+  AUTOLOAD:=$(call AutoLoad,61,cdc_ncm)
+  $(call AddDepends/usb-net)
+endef
+
+define KernelPackage/usb-net-cdc-ether/description
+ Kernel support for USB NCM Ethernet devices
+endef
+
+$(eval $(call KernelPackage,usb-net-cdc-ncm))
 
 define KernelPackage/usb-net-rndis
   TITLE:=Support for RNDIS connections
