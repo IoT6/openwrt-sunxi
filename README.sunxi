@@ -1,0 +1,46 @@
+This is the experimental port of OpenWRT to sun4i platform. 
+So far it will get you a bootable rootfs and a kernel with modules. 
+This file has some tips and tricks to get things running. 
+
+###  Compiling everything ###
+
+* Grab a copy of linux-sunxi kernel tree for github:
+  https://github.com/linux-sunxi/linux-sunxi
+  Use sunxi-3.4 branch
+
+* cp config_sunxi .config
+* make menuconfig
+In advanced development options set the path to your linux-sunxi 
+kernel tree
+
+* make V=s
+
+* copy kernel and unpack rootfs to a bootable sd card
+* adjust uboot bootargs: add init=/etc/preinit (!REQUIRED! Otherwise /proc won't mount)
+
+### Setting board name / board model ###
+
+sunxi-specific scripts extract uboot environment variables 'wrt_name'
+and wrt_model and use them in /tmp/sysinfo/
+While now only SD card has been tested and the actual name and model play no 
+big role. yet. 
+Due to how sunxi kernel works this looks like the best way to set theese so far. 
+  
+
+### Known bugs ###
+
+* ipv6 doesn't compile as a module (sunxi kernel bug), so do not enable kmod-ipv6
+* usb doesn't work when compiled as a module, built-in for now
+* ext4 has to be built-in to boot via ext4, don't enable kmod-ext4
+* some sun4i modules like sound, hdmi and mali are missing from openwrt
+* for router-like applications we shouldn't allocate memory for mali, kernel patches needed 
+* iptables package has a few patches to compile cleanly against external kernel tree
+
+
+### NOTICE ###
+
+Be warned, that this branch is frequently _REBASED_ upon the openwrt trunk. 
+I do not merge upstream changes to keep the patchset clean for further 
+mainlining, should it happen any time in future.
+
+ 
