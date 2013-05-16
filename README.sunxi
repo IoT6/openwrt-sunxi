@@ -30,6 +30,12 @@ Due to how sunxi kernel works this looks like the best way to set theese so far.
 ### Known bugs ###
 
 * ipv6 doesn't compile as a module (sunxi kernel bug), so do not enable kmod-ipv6
+
+if you select some packages that require ipv6, they will enable kmod-ipv6. Before
+compiling make sure kmod-ipv6=n is manually set in the OpenWrt .config
+
+in target/linux/sunxi/config-3.4 the IPv6 is all enabled statically for now
+
 * usb doesn't work when compiled as a module, built-in for now
 * ext4 has to be built-in to boot via ext4, don't enable kmod-ext4
 * some sun4i modules like sound, hdmi and mali are missing from openwrt
