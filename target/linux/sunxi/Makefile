@@ -19,7 +19,7 @@ CFLAGS:=-O2 -pipe -march=armv7-a -mfloat-abi=hard -mfpu=neon \
 
 MAINTAINER:=Andrew Andrianov <andrew@ncrmnt.org>
 
-LINUX_VERSION:=3.4.24
+LINUX_VERSION:=3.4.43
 
 DEFAULT_PACKAGES += uboot-envtools
 
