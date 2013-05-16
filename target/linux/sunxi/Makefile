@@ -14,8 +14,7 @@ FEATURES:=fpu usb ext4 display
 SUBTARGETS=cubie
 
 CFLAGS:=-O2 -pipe -march=armv7-a -mfloat-abi=hard -mfpu=neon \
-	-ftree-vectorize -mvectorize-with-neon-quad -mcpu=cortex-a8 -mtune=cortex-a8 \
-	-ffast-math
+	-ftree-vectorize -mvectorize-with-neon-quad -mcpu=cortex-a8 -mtune=cortex-a8 
 
 MAINTAINER:=Andrew Andrianov <andrew@ncrmnt.org>
 
