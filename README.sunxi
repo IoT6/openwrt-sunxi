@@ -13,7 +13,7 @@ This file has some tips and tricks to get things running.
 In advanced development options set the path to your linux-sunxi 
 kernel tree
 
-* make V=s
+* make IGNORE_ERRORS=m V=s
 
 * copy kernel and unpack rootfs to a bootable sd card
 * adjust uboot bootargs: add init=/etc/preinit (!REQUIRED! Otherwise /proc won't mount)
